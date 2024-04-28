@@ -58,6 +58,7 @@ namespace lve
 		shaderStages[0].module = vertShaderModule;
 		shaderStages[0].pName = "main";
 		shaderStages[0].flags = 0;
+		shaderStages[0].pNext = nullptr;
 		shaderStages[0].pSpecializationInfo = nullptr;
 
 		shaderStages[1].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -65,6 +66,7 @@ namespace lve
 		shaderStages[1].module = fragShaderModule;
 		shaderStages[1].pName = "main";
 		shaderStages[1].flags = 0;
+		shaderStages[1].pNext = nullptr;
 		shaderStages[1].pSpecializationInfo = nullptr;
 
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
@@ -74,13 +76,20 @@ namespace lve
 		vertexInputInfo.pVertexAttributeDescriptions = nullptr;
 		vertexInputInfo.pVertexBindingDescriptions = nullptr;
 
+		VkPipelineViewportStateCreateInfo viewportInfo{};
+		viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+		viewportInfo.viewportCount = 1;
+		viewportInfo.pViewports = &configInfo.viewport;
+		viewportInfo.scissorCount = 1;
+		viewportInfo.pScissors = &configInfo.scissor;
+
 		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 		pipelineInfo.stageCount = 2;
 		pipelineInfo.pStages = shaderStages;
 		pipelineInfo.pVertexInputState = &vertexInputInfo;
 		pipelineInfo.pInputAssemblyState = &configInfo.inputAssemblyInfo;
-		pipelineInfo.pViewportState = &configInfo.viewportInfo;
+		pipelineInfo.pViewportState = &viewportInfo;
 		pipelineInfo.pRasterizationState = &configInfo.rasterizationInfo;
 		pipelineInfo.pMultisampleState = &configInfo.multisampleInfo;
 		pipelineInfo.pColorBlendState = &configInfo.colorBlendInfo;
@@ -94,10 +103,10 @@ namespace lve
 		pipelineInfo.basePipelineIndex = -1;
 		pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
-
+		
 		if(vkCreateGraphicsPipelines(lveDevice.device(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
 		{
-			//throw std::runtime_error("Failed to create a Graphics Pipeline");
+			throw std::runtime_error("Failed to create a Graphics Pipeline");
 		}
 	}
 
@@ -132,11 +141,6 @@ namespace lve
 		configInfo.scissor.offset = { 0, 0 };
 		configInfo.scissor.extent = { width, height };
 
-		configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
-		configInfo.viewportInfo.viewportCount = 1;
-		configInfo.viewportInfo.pViewports = &configInfo.viewport;
-		configInfo.viewportInfo.scissorCount = 1;
-		configInfo.viewportInfo.pScissors = &configInfo.scissor;
 
 		configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
 		configInfo.rasterizationInfo.depthClampEnable = VK_FALSE;
