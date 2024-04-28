@@ -4,6 +4,7 @@
 #include<GLFW/glfw3.h>
 
 #include<string>
+#include<stdexcept>
 
 namespace lve
 {
@@ -14,6 +15,8 @@ namespace lve
 		~LveWindow();
 
 		bool shouldClose() { return glfwWindowShouldClose(window); }
+
+		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
 	private:
 

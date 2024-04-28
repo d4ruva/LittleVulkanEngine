@@ -79,12 +79,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\first_app.cpp" />
+    <ClCompile Include="src\lve_device.cpp" />
     <ClCompile Include="src\lve_pipeline.cpp" />
     <ClCompile Include="src\lve_window.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\first_app.hpp" />
+    <ClInclude Include="src\lve_device.hpp" />
     <ClInclude Include="src\lve_pipeline.hpp" />
     <ClInclude Include="src\lve_window.hpp" />
   </ItemGroup>
