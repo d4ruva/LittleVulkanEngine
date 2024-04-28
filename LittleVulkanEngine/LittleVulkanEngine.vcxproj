@@ -79,12 +79,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\first_app.cpp" />
+    <ClCompile Include="src\lve_pipeline.cpp" />
     <ClCompile Include="src\lve_window.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\first_app.hpp" />
+    <ClInclude Include="src\lve_pipeline.hpp" />
     <ClInclude Include="src\lve_window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\simple_shader.frag" />
+    <None Include="shaders\simple_shader.vert" />
+    <None Include="shader_compile.bat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
