@@ -105,7 +105,7 @@ namespace lve
 
 			if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS)
 			{
-				std::runtime_error("Failed to record command buffers");
+				throw std::runtime_error("Failed to record command buffers");
 			}
 		}
 	}
