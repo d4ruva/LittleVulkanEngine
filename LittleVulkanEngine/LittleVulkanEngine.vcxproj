@@ -57,6 +57,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)deps\GLFW\lib-vc2022;$(VULKAN_SDK)\Lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;vulkan-1.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)shader_compile.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -76,10 +79,14 @@
       <AdditionalLibraryDirectories>$(SolutionDir)deps\GLFW\lib-vc2022;$(VULKAN_SDK)\Lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;vulkan-1.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)shader_compile.bat</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\first_app.cpp" />
     <ClCompile Include="src\lve_device.cpp" />
+    <ClCompile Include="src\lve_game_object.cpp" />
     <ClCompile Include="src\lve_model.cpp" />
     <ClCompile Include="src\lve_pipeline.cpp" />
     <ClCompile Include="src\lve_swap_chain.cpp" />
@@ -87,6 +94,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\lve_game_object.hpp" />
     <ClInclude Include="src\lve_model.hpp" />
     <ClInclude Include="src\lve_swap_chain.hpp" />
     <ClInclude Include="src\first_app.hpp" />
