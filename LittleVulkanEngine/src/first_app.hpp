@@ -27,7 +27,10 @@ namespace lve
 		void createPipelineLayout();
 		void createPipeline();
 		void createCommandBuffers();
+		void freeCommandBuffers();
 		void drawFrame();
+		void recreateSwapchains();
+		void recordCommandBuffer(int imageIndex);
 
 		// added hw
 		void sierpinski(
@@ -40,7 +43,7 @@ namespace lve
 	public:
 		LveWindow lveWindow{ WIDTH, HEIGHT, "Untitled Window" };
 		LveDevice lveDevice{ lveWindow};
-		LveSwapChain lveSwapchain{ lveDevice, lveWindow.getExtent() };
+		std::unique_ptr<LveSwapChain> lveSwapchain;
 		std::unique_ptr<LvePipeline> lvePipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
