@@ -59,12 +59,17 @@ namespace lve
 
 	std::vector<VkVertexInputAttributeDescription> LveModel::Vertex::getAttributeDescriptions()
 	{
-		std::vector<VkVertexInputAttributeDescription> attributeDescriptions(1);
+		std::vector<VkVertexInputAttributeDescription> attributeDescriptions(2);
 
 		attributeDescriptions[0].binding = 0;
 		attributeDescriptions[0].location = 0; // must be equal to what location is in shader
 		attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
-		attributeDescriptions[0].offset = 0;
+		attributeDescriptions[0].offset = offsetof(Vertex, position);
+		
+		attributeDescriptions[1].binding = 0;
+		attributeDescriptions[1].location = 1; // color location // must be equal to what location is in shader
+		attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT; // three way float
+		attributeDescriptions[1].offset = offsetof(Vertex, color);
 
 		return attributeDescriptions;
 
