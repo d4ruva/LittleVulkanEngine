@@ -22,6 +22,7 @@ namespace lve
 		bool isFrameInProgress() const { return isFrameStarted; }
 
 		VkRenderPass getSwapchainRenderPass() const { return lveSwapchain->getRenderPass(); }
+		float getAspectRatio() const { return lveSwapchain->extentAspectRatio(); }
 		VkCommandBuffer getCurrentCommandBuffer() const { assert(isFrameStarted&& "Cannot get command buffer when frame not in progress"); return commandBuffers[currentFrameIndex]; }
 
 		int getFrameIndex() const { assert(isFrameStarted && "Cannot get frame index when frame not in progrss"); return currentFrameIndex; }
