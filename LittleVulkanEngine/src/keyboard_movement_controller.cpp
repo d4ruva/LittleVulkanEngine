@@ -14,7 +14,7 @@ namespace lve {
         if (glfwGetKey(window, keys.lookDown) == GLFW_PRESS) rotate.x -= 1.f;
 
         if (glm::dot(rotate, rotate) > std::numeric_limits<float>::epsilon()) {
-            gameObject.transform.rotation += lookSpeed * dt * glm::normalize(rotate);
+            gameObject.transform.rotation += lookSpeed * dt * glm::normalize(rotate);  
         }
 
         // limit pitch values between about +/- 85ish degrees
