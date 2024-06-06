@@ -49,7 +49,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\GLM;$(SolutionDir)deps\GLFW\include;$(VULKAN_SDK)\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\GLM;$(SolutionDir)deps\tinyobjloader;$(SolutionDir)deps\GLFW\include;$(VULKAN_SDK)\Include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -69,7 +70,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\GLM;$(SolutionDir)deps\GLFW\include;$(VULKAN_SDK)\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\GLM;$(SolutionDir)deps\tinyobjloader;$(SolutionDir)deps\GLFW\include;$(VULKAN_SDK)\Include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,6 +109,7 @@
     <ClInclude Include="src\lve_device.hpp" />
     <ClInclude Include="src\lve_pipeline.hpp" />
     <ClInclude Include="src\lve_camera.hpp" />
+    <ClInclude Include="src\lve_utils.hpp" />
     <ClInclude Include="src\lve_window.hpp" />
     <ClInclude Include="src\simple_render_system.hpp" />
   </ItemGroup>
